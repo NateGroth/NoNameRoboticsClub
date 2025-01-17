@@ -11,7 +11,7 @@ Servo Elbow;
 Servo Wrist;
 Servo Claw;
 
-// These values are set by the Input class
+// These values are modifed by the Input class, range from 1 -> 1023
 int BaseTarget;
 int ShoulderTarget;
 int ElbowTarget;
@@ -49,5 +49,5 @@ void Setup() {
 }
 
 void Loop() {
-
+    Input::readValues();
 }

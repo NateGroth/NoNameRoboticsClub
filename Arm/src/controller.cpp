@@ -18,8 +18,16 @@ void Input::readValues() {
     readPot(ElbowPin, elbowBuffer);
     readPot(WristPin, wristBuffer);
     readPot(ClawPin, clawBuffer);
+
+    *base = getAverage(baseBuffer);
+    *shoulder = getAverage(shoulderBuffer);
+    *elbow = getAverage(elbowBuffer);
+    *wrist = getAverage(wristBuffer);
+    *claw = getAverage(clawBuffer);
+
 }
 
+//Helper function to read and write to specific pin and their associated buffer
 int Input::readPot(int pin, std::queue<int>& buffer) {
     if (buffer.size() >= BufferSize) {
         buffer.pop();
@@ -28,8 +36,16 @@ int Input::readPot(int pin, std::queue<int>& buffer) {
     buffer.push(analogRead(pin));
 }
 
-int Input::getAverage() {
+int Input::getAverage(std::queue<int>& buffer) {
+    //Currently using stdlib queue implementation that requires coppying queue and repeatedly dequeuing. Maybe we can create our own implementation witha built in avg func?
+    std::queue<int> copy = buffer;
+    int sum = 0;
 
+    while(!copy.empty()) {
+        sum += copy.front();
+        copy.pop();
+    }
+    return sum / BufferSize;
 }
 
 

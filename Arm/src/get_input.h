@@ -24,7 +24,7 @@ class Input {
         std::queue<int> wristBuffer;
         std::queue<int> clawBuffer;
 
-        int getAverage();
+        int getAverage(std::queue<int>& buffer);
         int readPot(int pin, std::queue<int>& buffer);
 };
 
