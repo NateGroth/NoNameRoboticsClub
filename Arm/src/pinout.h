@@ -1,17 +1,20 @@
 
 
 #ifndef PINOUT
+#define PINOUT
 
-#define basePin 0
-#define shoulderPin 1
-#define ElbowPin 2
-#define WristPin 3
-#define ClawPin 4
-#define BasePotPin 5
-#define ShoulderPotPin 6
-#define ElbowPotPin 7
-#define WristPotPin 8
-#define ClawPotPin 9
-#define BufferSize 100
+const int basePin = 0;
+const int ShoulderPin = 1;
+const int ElbowPin = 2;
+const int WristPin = 3;
+const int ClawPin = 4;
+const int BasePotPin =  54;
+const int ShoulderPotPin =  55;
+const int ElbowPotPin = 56;
+const int WristPotPin = 57;
+const int ClawPotPin = 58;
+
+const int BufferSize = 100;
+
 
 #endif

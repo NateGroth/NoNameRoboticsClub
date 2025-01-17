@@ -14,7 +14,7 @@ Input::Input(int* base, int* shoulder, int* elbow, int* wrist, int* claw) {
 
 void Input::readValues() {
     readPot(basePin, baseBuffer);
-    readPot(shoulderPin, shoulderBuffer);
+    readPot(ShoulderPin, shoulderBuffer);
     readPot(ElbowPin, elbowBuffer);
     readPot(WristPin, wristBuffer);
     readPot(ClawPin, clawBuffer);
@@ -33,7 +33,9 @@ int Input::readPot(int pin, std::queue<int>& buffer) {
         buffer.pop();
     }
     //analogRead is being mocked via mock.h, make sure to remove mock during produciton
-    buffer.push(analogRead(pin));
+    int value = analogRead(pin);
+    buffer.push(value);
+    return value;
 }
 
 int Input::getAverage(std::queue<int>& buffer) {

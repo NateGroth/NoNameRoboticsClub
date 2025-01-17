@@ -31,7 +31,9 @@ int Input::readPot(int pin, std::queue<int>& buffer) {
         buffer.pop();
     }
     //analogRead is being mocked via mock.h, make sure to remove mock during produciton
-    buffer.push(analogRead(pin));
+    int value = analogRead(pin);
+    buffer.push(value);
+    return value;
 }
 
 int Input::getAverage(std::queue<int>& buffer) {
