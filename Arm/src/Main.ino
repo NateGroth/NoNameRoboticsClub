@@ -5,12 +5,6 @@
 
 using namespace std;
 
-Servo Base;
-Servo Shoulder;
-Servo Elbow;
-Servo Wrist;
-Servo Claw;
-
 // These values are modifed by the Input class, range from 1 -> 1023
 int BaseTarget;
 int ShoulderTarget;
@@ -20,13 +14,7 @@ int ClawTarget;
 
 void Setup() {
     Serial.begin(9600)
-
-    //Startup arm servos
-    Base.attach(basePin)
-    Shoulder.attach(shoulderPin)
-    Elbow.attach(ElbowPin)
-    Wrist.attach(WristPin)
-    Claw.attach(ClawPin)
+    
 
     //Move to 100 on start
     Base.write(100)
