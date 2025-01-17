@@ -12,5 +12,6 @@
 #define ElbowPotPin 7
 #define WristPotPin 8
 #define ClawPotPin 9
+#define BufferSize 100
 
 #endif

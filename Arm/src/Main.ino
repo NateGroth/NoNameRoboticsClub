@@ -3,6 +3,9 @@
 #include "get_input.h"
 #include "send_cmd.h"   
 #include "pinout.h"
+#include <queue>
+
+using namespace std;
 
 Servo Base;
 Servo Shoulder;
@@ -15,12 +18,6 @@ int ShoulderPot;
 int ElbowPot;
 int WristPot;
 int ClawPot;
-
-int BaseBuffer[100];
-int ShoulderBuffer[100];
-int ElbowBuffer[100];
-int WristBuffer[100];
-int ClawBuffer[100];
 
 void Setup() {
     Serial.begin(9600)
@@ -37,7 +34,11 @@ void Setup() {
     Wrist.write(100)
     Claw.write(100)
 
-
+    queue<int> baseBuffer;
+    queue<int> shoulderBuffer;
+    queue<int> elbowBuffer;
+    queue<int> wristBuffer;
+    queue<int> clawBuffer;
 }
 
 void Loop() {
