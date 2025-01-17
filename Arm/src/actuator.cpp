@@ -6,7 +6,7 @@
 
 Arm::Arm() {
     this->Base.attach(basePin);
-    this->Shoulder.attach(shoulderPin);
+    this->Shoulder.attach(ShoulderPin);
     this->Elbow.attach(ElbowPin);
     this->Wrist.attach(WristPin);
     this->Claw.attach(ClawPin);
