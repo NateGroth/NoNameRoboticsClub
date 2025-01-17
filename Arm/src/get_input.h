@@ -1,24 +1,31 @@
+#include <queue>
 
 #ifndef GET_INPUT
 #define GET_INPUT
 
-class input {
+class Input {
     public:
-        input(int* base, int* shoulder, int* elbow, int* wrist, int* claw);
-        void readValues(int* base, int* shoulder, int* elbow, int* wrist, int* claw);
-        int getAverage();
+    // Constructor which takes in pointers to varaibles in main func (MODIFIES THESE VALUES)
+        Input(int* base, int* shoulder, int* elbow, int* wrist, int* claw);
+        void readValues();
     private:
-        int curr;
-        int last;
-        int avg;
 
+    //Stores pointer to variables in main func
         int* base;
         int* shoulder;
         int* elbow;
         int* wrist;
         int* claw;
 
-        
+    //Initialize buffer, used for smoothing out inputs (change length in pinout.h >> BufferSize)
+        std::queue<int> baseBuffer;
+        std::queue<int> shoulderBuffer;
+        std::queue<int> elbowBuffer;
+        std::queue<int> wristBuffer;
+        std::queue<int> clawBuffer;
+
+        int getAverage();
+        int readPot(int pin, std::queue<int>& buffer);
 };
 
 #endif
