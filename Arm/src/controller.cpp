@@ -1,7 +1,7 @@
 #include "get_input.h"
 #include "pinout.h"
 #include <queue>
-//remove mock when pushing to prod
+//remove for prod
 #include "mock.h"
 
 Input::Input(int* base, int* shoulder, int* elbow, int* wrist, int* claw) {
@@ -47,7 +47,3 @@ int Input::getAverage(std::queue<int>& buffer) {
     }
     return sum / BufferSize;
 }
-
-
-
-

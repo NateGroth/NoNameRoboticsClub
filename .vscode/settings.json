@@ -1,5 +1,12 @@
 {
-    "files.associations": {
-        "queue": "cpp"
-    }
+  "files.associations": {
+    "queue": "cpp",
+    "deque": "cpp",
+    "format": "cpp",
+    "initializer_list": "cpp",
+    "vector": "cpp",
+    "xstring": "cpp",
+    "xutility": "cpp",
+    "random": "cpp"
+  }
 }

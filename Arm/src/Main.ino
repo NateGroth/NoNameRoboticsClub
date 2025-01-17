@@ -1,7 +1,9 @@
-#include <Servo.h>
 #include "get_input.h"
 #include "send_cmd.h"   
 #include "pinout.h"
+//remove for prod
+#include "mock.h"
+
 
 using namespace std;
 
@@ -12,16 +14,12 @@ int ElbowTarget;
 int WristTarget;
 int ClawTarget;
 
-void Setup() {
-    Serial.begin(9600)
-    
+Input input(&BaseTarget, &ShoulderTarget, &ElbowTarget, &WristTarget, &ClawTarget);
+Arm arm;
 
-    //Move to 100 on start
-    Base.write(100)
-    Shoulder.write(100)
-    Elbow.write(100)
-    Wrist.write(100)
-    Claw.write(100)
+void setup() {
+    //uncomment for prod
+    // Serial.begin(9600);
 
     //Set Potentiometer analog pins to INPUT
     pinMode(BasePotPin, INPUT);
@@ -29,13 +27,9 @@ void Setup() {
     pinMode(ElbowPotPin, INPUT);
     pinMode(WristPotPin, INPUT);
     pinMode(ClawPotPin, INPUT);
-
-    //Initialize input class
-    Input Input(&BaseTarget, &ShoulderTarget, &Elbowtarget, &WristTarget, &ClawTarget)
-
-    
 }
 
-void Loop() {
-    Input::readValues();
+void loop() {
+    input.readValues();
+    arm.send_CMD(&BaseTarget, &ShoulderTarget, &ElbowTarget, &WristTarget, &ClawTarget);
 }
